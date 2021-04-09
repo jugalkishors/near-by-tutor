@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OTP verification - Near By Mentor</title>
+</head>
+<body>
+<head>
+	<style type="text/css">
+		.input_wrapper{position:relative}
+.plastic_select, input[type=url], input[type=text], input[type=tel], input[type=number], input[type=email], input[type=password], select, textarea {
+    font-size: 1.25rem;
+    line-height: normal;
+    padding: .75rem;
+    border: 1px solid #C5C5C5;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    color: #555459;
+    width: 100%;
+    max-width: 100%;
+    font-family: Slack-Lato,appleLogo,sans-serif;
+    margin: 0 0 .5rem;
+    -webkit-transition: box-shadow 70ms ease-out,border-color 70ms ease-out;
+    -moz-transition: box-shadow 70ms ease-out,border-color 70ms ease-out;
+    transition: box-shadow 70ms ease-out,border-color 70ms ease-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-shadow: none;
+    height: auto;
+}
+.no_touch .plastic_select:hover,.no_touch input:hover,.no_touch select:hover,.no_touch textarea:hover{border-color:#2780f8}
+.focus,.plastic_select:active,.plastic_select:focus,input[type=url]:active,input[type=url]:focus,input[type=text]:active,input[type=text]:focus,input[type=number]:active,input[type=number]:focus,input[type=email]:active,input[type=email]:focus,input[type=password]:active,input[type=password]:focus,select:active,select:focus,textarea:active,textarea:focus{border-color:#2780f8;box-shadow:0 0 7px rgba(39,128,248,.15);outline-offset:0;outline:0}
+
+.large_bottom_margin {
+    margin-bottom: 2rem!important;
+}
+.split_input{display:table;border-spacing:0}
+.split_input_item{display:table-cell;border:1px solid #9e9ea6}
+.split_input_item:not(:first-child){border-left:none}
+.split_input_item:first-child{border-top-left-radius:5px;border-bottom-left-radius:5px}
+.split_input_item:last-child{border-top-right-radius:5px;border-bottom-right-radius:5px}
+.split_input_item.focused{border:1px double #2780f8;box-shadow:0 0 7px rgba(39,128,248,.3)}
+.split_input_item input{height:5rem;text-align:center;font-size:2.5rem;border:none;background:0 0;box-shadow:none}
+.split_input_item input:active,.split_input_item input:focus,.split_input_item input:hover{box-shadow:none}
+
+
+.fs_split{position:absolute;overflow:hidden;width:100%;top:0;bottom:0;left:0;right:0;background-color:#e8e8e8;-webkit-transition:background-color .2s ease-out 0s;-moz-transition:background-color .2s ease-out 0s;transition:background-color .2s ease-out 0s}
+.fs_split h1{font-size:2.625rem;line-height:3rem;font-weight:300;margin-bottom:2rem}
+.fs_split label{margin-bottom:.5rem}
+.fs_split .desc{font-size:1.25rem;color:#9e9ea6;margin-bottom:2rem}
+.fs_split .email{color:#555459;font-weight:700}
+.fs_split .header_error_message{margin:0 11%;padding:1rem 2rem;background:#fff1e1;border:none;border-left:.5rem solid #ffa940;border-radius:.25rem}
+.fs_split .header_error_message h3{margin:0}
+.fs_split .error_message{display:none;font-weight:700;color:#ffa940}
+.fs_split .error input,.fs_split .error textarea{border:1px solid #ffa940;background:#fff1e1}
+.fs_split .error input:focus,.fs_split .error textarea:focus{border-color:#fff1e1;box-shadow:0 0 7px rgba(255,185,100,.15)}
+.fs_split .error .error_message{display:inline}
+.confirmation_code_span_cell{display:table-cell;font-weight:700;font-size:2rem;text-align:center;padding:0 .5rem;width:2rem}
+.confirmation_code_state_message{position:absolute;width:100%;opacity:0;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;transition:opacity .2s}
+.confirmation_code_state_message.error,.confirmation_code_state_message.processing,.confirmation_code_state_message.ratelimited{font-size:1.25rem;font-weight:700;line-height:2rem}
+.confirmation_code_state_message.processing{color:#3aa3e3}
+.confirmation_code_state_message.error,.confirmation_code_state_message.ratelimited{color:#ffa940}
+.confirmation_code_state_message ts-icon:before{font-size:2.5rem}
+.confirmation_code_state_message svg.ts_icon_spinner{height:2rem;width:2rem}
+.confirmation_code_checker{position:relative;height:12rem;text-align:center}
+.confirmation_code_checker[data-state=unchecked] .confirmation_code_state_message.unchecked,.confirmation_code_checker[data-state=error] .confirmation_code_state_message.error,.confirmation_code_checker[data-state=processing] .confirmation_code_state_message.processing,.confirmation_code_checker[data-state=ratelimited] .confirmation_code_state_message.ratelimited{opacity:1}
+.large_bottom_margin {
+    margin-bottom: 2rem !important;
+}
+
+	</style>
+</head>
+
+<?php
+    $name1 = $_GET['name'];
+    $email1 = $_GET['email'];
+    $no1 = $_GET['no'];
+    $pass1=$_GET['pass'];
+    $pin1=$_GET['pin'];
+    $gen1=$_GET['sex'];
+    $roll1=$_GET['roll'];
+    $day1=$_GET['day'];
+     $mon1=$_GET['month'];
+     $yer1=$_GET['year'];
+                
+    $ab1=$day1.$mon1.$yer1;
+
+?>
+<?php
+$con=mysqli_connect('localhost','root','','nbm');
+
+$qry="SELECT * FROM `teacher` WHERE email='$email1'";
+ $runs=mysqli_query($con,$qry);
+ $row = mysqli_num_rows($runs);
+if($row<1){
+
+}
+else{
+	?>
+	<script>
+	alert('Email is already exists!!!');
+	window.open('sregister.php','_self');
+	</script>
+	<?php
+}
+?>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+    <div class="col-sm-6 col-sm-offset-2" ><!-- col -->
+		<h2><h1>Check your email!</h1></h2>
+        <p class="desc">We’ve sent a six-digit confirmation code to <strong><?php echo $email1; ?></strong> . Enter it below to confirm your email address.</p>
+        <br><br><br>
+        <form action="s_otp.php" method="post">
+       <label><span class="normal">Your </span>confirmation code</label>
+         <div class="confirmation_code split_input large_bottom_margin" data-multi-input-code="true">
+    			<div class="confirmation_code_group">
+					<div class="split_input_item input_wrapper"><input type="text" name="o1" class="inline_input" maxlength="1"></div>
+					<div class="split_input_item input_wrapper"><input type="text" name="o2" class="inline_input" maxlength="1"></div>
+					<div class="split_input_item input_wrapper"><input type="text" name="o3" class="inline_input" maxlength="1"></div>
+				</div>
+
+				<div class="confirmation_code_span_cell">—</div>
+
+				<div class="confirmation_code_group">
+					<div class="split_input_item input_wrapper"><input type="text" name="o4" class="inline_input" maxlength="1"></div>
+					<div class="split_input_item input_wrapper"><input type="text" name="o5" class="inline_input" maxlength="1"></div>
+					<div class="split_input_item input_wrapper"><input type="text" name="o6" class="inline_input" maxlength="1"></div>
+					<input type="hidden" name="name" value="<?php echo $name1; ?>">
+                    <input type="hidden" name="email" value="<?php echo $email1; ?>">
+                    <input type="hidden" name="no" value="<?php echo $no1; ?>">
+                    <input type="hidden" name="pass" value="<?php echo $pass1; ?>">
+                    <input type="hidden" name="pin" value="<?php echo $pin1; ?>">
+                    <input type="hidden" name="gen" value="<?php echo $gen1; ?>">
+                    <input type="hidden" name="roll" value="<?php echo $roll1; ?>">
+                    <input type="hidden" name="ab" value="<?php echo $ab1; ?>">
+				<input type="submit" name="submit">
+				</div>
+			</div>
+    
+            </div><!-- endof col -->
+    </div>
+</div></form>
+
+<?php
+  if(isset($_POST['submit'])){
+$o1=$_POST['o1'];
+$o2=$_POST['o2'];
+$o3=$_POST['o3'];
+$o4=$_POST['o4'];
+$o5=$_POST['o5'];
+$o6=$_POST['o6'];
+$otp=$o1.$o2.$o3.$o4.$o5.$o6;
+
+$name= $_POST['name'];
+    $email = $_POST['email'];
+    $no = $_POST['no'];
+    $pass=$_POST['pass'];
+    $pin=$_POST['pin'];
+    $gen=$_POST['gen'];
+    $roll=$_POST['roll'];
+    $ab=$_POST['ab'];
+
+  if($otp==223344){
+$con = mysqli_connect('localhost','root','','nbm');
+$query = "INSERT INTO `student`(`name`, `email`, `dob`, `gender`, `contact`, `pincode`, `password`, `roll`) VALUES ('$name','$email','$ab','$gen','$no','$pin','$pass','$roll')";
+
+$run = mysqli_query($con,$query);
+
+if($run==TRUE)
+{
+    ?>
+    <script>
+        alert('Account created successfully');
+    window.open('slogin.php','_self');
+    </script>
+    <?php
+}
+else
+{
+   ?>
+    <script>
+        alert('Account not created !!!');
+    window.open('sregister.php','_self');
+    </script>
+    <?php
+}
+
+
+
+ 
+}
+else{
+    ?>
+    <script>
+        alert('OTP is Wrong !!!');
+    window.open('sregister.php','_self');
+    </script>
+    <?php
+}
+}
+?>
+</body>
+</html>
